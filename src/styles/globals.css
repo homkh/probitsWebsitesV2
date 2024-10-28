@@ -1,0 +1,225 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom font family */
+@font-face {
+  font-family: "Gotham";
+  src: url("/fonts/Gotham-Black.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("/fonts/Gotham-BlackItalic.otf") format("opentype");
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("/fonts/Gotham-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("/fonts/Gotham-BoldItalic.otf") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("/fonts/Gotham-Book.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("/fonts/Gotham-BookItalic.otf") format("opentype");
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("/fonts/Gotham-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("/fonts/Gotham-LightItalic.otf") format("opentype");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("/fonts/Gotham-Medium.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("/fonts/Gotham-MediumItalic.otf") format("opentype");
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("/fonts/Gotham-Thin.otf") format("opentype");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("/fonts/Gotham-ThinItalic.otf") format("opentype");
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("/fonts/Gotham-Ultra.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("/fonts/Gotham-UltraItalic.otf") format("opentype");
+  font-weight: 800;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("/fonts/Gotham-XLight.otf") format("opentype");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("/fonts/Gotham-XLightItalic.otf") format("opentype");
+  font-weight: 200;
+  font-style: italic;
+}
+
+/* Base styles */
+@layer base {
+  :root {
+    --background-color-dark: 0 0% 0%;
+    --text-color-dark: 0 0% 100%;
+    --background-color-light: 0 0% 100%;
+    --text-color-light: 0 0% 0%; 
+  }
+
+  html,
+  body {
+    font-family: "gotham", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    /* @apply bg-[hsl(var(--background-color))] text-[hsl(var(--text-color))]; */
+    background-color: hsl(var(--background-color-dark));
+    color: hsl(var(--text-color-dark));
+    overflow-x: hidden;
+  }
+
+  /* code for the toogled white screen */
+  @media (perfers-color-scheme: light) {
+    html,
+    body {
+      background-color: hsl(var(--background-color-light));
+      color: hsl(var(--text-color-light));
+    }
+  }
+
+  h1 {
+    @apply text-5xl font-bold text-white font-gotham;
+  }
+
+}
+
+/* Phone input customization */
+.PhoneInput {
+  display: flex;
+  align-items: center;
+}
+
+.PhoneInputInput {
+  padding-left: 0.3em;
+  background-color: rgb(15 23 42);
+  border: none;
+  outline: none;
+  color: white;
+}
+
+.PhoneInputCountry {
+  margin-left: 0.5em;
+}
+
+.PhoneInputInput:focus {
+  outline: none;
+  border: none;
+}
+
+.PhoneInputInput:invalid {
+  outline: none;
+  border: none;
+}
+
+.PhoneInputCountrySelectArrow {
+  padding-left: 4px;
+  color: white;
+  border-color: white;
+  opacity: 1;
+}
+
+#phoneNumber:focus {
+  border-color: #6366f1;
+}
+
+/* custome loder */
+.loader {
+  width: 50px;
+  padding: 8px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #1253df;
+  --_m: conic-gradient(#0000 10%, #000), linear-gradient(#000 0 0) content-box;
+  -webkit-mask: var(--_m);
+  mask: var(--_m);
+  -webkit-mask-composite: source-out;
+  mask-composite: subtract;
+  animation: l3 1s infinite linear;
+}
+@keyframes l3 {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+/* overides the react slick dots */
+.slick-dots li button:before {
+  color: rgb(179, 178, 178) !important;
+  font-size: 10px !important;
+  margin-top: 10px;
+}
+
+
+.slick-dots li.slick-active button:before {
+  color: white !important;
+  font-size: 12px !important;
+}
